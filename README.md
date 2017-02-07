@@ -17,6 +17,10 @@ With a final aim to produce a simple REST api with symfony which will be consume
 ##### PHP and some of its pals.
 `sudo apt-get install php7.0 php7.0-mbstring php7.0-zip php7.0-xml`
 
+Pre-empt symfony from complaining and set php.ini `date.timezone = Europe/London`
+
+`sudo vi /etc/php/7.0/cli/php.ini`
+
 ##### Composer
 `sudo apt install composer`
 
