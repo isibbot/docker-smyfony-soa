@@ -30,7 +30,7 @@ webservice:
     - ../webservice_src:/var/www/html
   environment:
     PHP_IDE_CONFIG: serverName=api.isibbot_app.dev
-    XDEBUG_CONFIG: remote_host=${REMOTE_HOST}
+    # XDEBUG_CONFIG: remote_host=${REMOTE_HOST}
 
 content:
   build: content
