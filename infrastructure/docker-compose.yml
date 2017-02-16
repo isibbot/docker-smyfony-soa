@@ -6,8 +6,7 @@ web:
   ports:
     - 8082:80
   volumes:
-    - ..:/var/www
-    - ../app_src:/var/www/html
+    - ../app_src/frontend/dist:/var/www/html
 
 modphp:
   build: ./mod_php
@@ -26,7 +25,6 @@ webservice:
   ports:
     - 8083:80
   volumes:
-    - ..:/var/www
     - ../webservice_src:/var/www/html
   environment:
     PHP_IDE_CONFIG: serverName=api.isibbot_app.dev
