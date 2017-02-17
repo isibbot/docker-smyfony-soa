@@ -12,12 +12,25 @@ This project is an learning and example into using..
 
 With a final aim to produce a simple REST api with symfony which will be consumed by one of the plethora of modern Javascript frameworks.
 
+### Usage
+
+Bring everything up, db, backend, front-end.
+
+`/infrastructure docker-compose up`
+
+http://localhost:8082 Front-end angular app
+
+
 ### Prerequisites
 
 This isnt needed as such, just a reminder to myself how I originally set the project up. Gotchas, pitfalls etc.
 
 ##### PHP and some of its pals.
-`sudo apt-get install php7.0 php7.0-mbstring php7.0-zip php7.0-xml`
+
+```
+sudo apt-get install php-Mysql
+sudo apt install php-xml
+```
 
 Pre-empt symfony from complaining and set php.ini `date.timezone = Europe/London`
 
