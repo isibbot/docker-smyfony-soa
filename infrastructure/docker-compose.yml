@@ -23,7 +23,7 @@ webservice:
     - db
   build: ./mod_php
   ports:
-    - 8083:80
+    - 8086:80
   volumes:
     - ../webservice_src:/var/www/html
   environment:
