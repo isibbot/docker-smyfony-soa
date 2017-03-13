@@ -15,11 +15,13 @@ RUN apt-get clean && \
         build-essential \
         git
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cccfb50076874187bd9f21f65d8991d46ec5cc90518f447387fb9f76ebae1fbbacf329e583e30') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
+RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
+ && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
+ && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }"
+
+RUN php /tmp/composer-setup.php
+
+RUN mv /tmp/composer-setup.php /usr/local/bin/composer
 RUN echo "xdebug.remote_enable=1" >> /etc/php5/mods-available/xdebug.ini \
     && echo "xdebug.remote_autostart=1" >> /etc/php5/mods-available/xdebug.ini
 

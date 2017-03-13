@@ -31,10 +31,11 @@ webservice:
     # XDEBUG_CONFIG: remote_host=${REMOTE_HOST}
 
 content:
-  build: content
+  build: ./content
+  #HOST:CONTAINER
   volumes:
-   - /var/lib/mysql
-   - /content/db/setup.sh:/docker-entrypoint-initdb.d/setup.sh
+   #- ./var/lib/mysql
+   - ./content/db/setup.sh:/docker-entrypoint-initdb.d/setup.sh
 
 db:
   image: mysql:5.7
